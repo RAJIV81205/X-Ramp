@@ -367,8 +367,14 @@ This project is built for hackathon demonstration purposes. In production, ensur
 
 - **Live Demo**: [https://x-ramp.vercel.app](https://x-ramp.vercel.app) *(Coming Soon)*
 - **Documentation**: [https://docs.x-ramp.io](https://docs.x-ramp.io) *(Coming Soon)*
-- **GitHub**: [https://github.com/your-username/x-ramp](https://github.com/prasoonk1204/X-Ramp)
+- **GitHub**: [https://github.com/your-username/x-ramp](https://github.com/RAJIV81205/X-Ramp)
 - **Stellar Contract**: [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CDD3IXWBEYPF4VIOTHV7STV3Q2QS3CPJELUSZXRUBZMKZIQD3QN355EU)
+
+## **List of User Wallet Addresses (Verifiable on Stellar Explorer):**
+  1. GCMVTOA4Q6KTYEZPQ47GMFMRXFAYPJ4AICGTNS7NA32DGVCMTASO6C3O  
+  2. GDWNR6RNPAXVQZXJCNPWZCRIXG2TGA4FOTGHZOGRTB6QL5HV34DL7ZZL  
+  3. GAI632JAHH5C4AFHWHRZDRNVMHLJ3CCMESHVZBDAPI3O3OJUOZ76AAIY  
+  4. GDHRKY7OR3T4BAXTBGC6RKDJ7AS2OGVX5OVMKJUM6U6GHW7TALCJDDCP  
 
 ## 📞 Support
 
