@@ -370,6 +370,10 @@ This project is built for hackathon demonstration purposes. In production, ensur
 - **GitHub**: [https://github.com/your-username/x-ramp](https://github.com/RAJIV81205/X-Ramp)
 - **Stellar Contract**: [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CDD3IXWBEYPF4VIOTHV7STV3Q2QS3CPJELUSZXRUBZMKZIQD3QN355EU)
 
+## **Demo Video Link:**  
+  Showing full MVP functionality  
+  👉 *[Video Link](https://drive.google.com/file/d/1ulMTN8q9r-vh1V_JvBYNuvzc0Sud81e5/view?usp=sharing)*
+
 ## **List of User Wallet Addresses (Verifiable on Stellar Explorer):**
   1. GCMVTOA4Q6KTYEZPQ47GMFMRXFAYPJ4AICGTNS7NA32DGVCMTASO6C3O  
   2. GDWNR6RNPAXVQZXJCNPWZCRIXG2TGA4FOTGHZOGRTB6QL5HV34DL7ZZL  
