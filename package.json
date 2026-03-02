@@ -1,0 +1,44 @@
+{
+  "name": "x-ramp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "circuit:compile": "cd circuits && ./compile.sh",
+    "circuit:setup": "cd circuits && node setup.js",
+    "circuit:test": "cd circuits && node test/circuit_test.js"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^12.3.0",
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "circomlib": "^2.0.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "ffjavascript": "^0.3.1",
+    "jose": "^5.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.563.0",
+    "mongoose": "^8.0.0",
+    "motion": "^12.29.0",
+    "next": "16.1.4",
+    "poseidon-lite": "^0.3.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-hot-toast": "^2.4.1",
+    "snarkjs": "^0.7.6",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
+    "circom": "^0.5.46",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.4",
+    "tailwindcss": "^4"
+  }
+}
