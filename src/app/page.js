@@ -10,9 +10,12 @@ import { HeroSection } from '../components/landing/HeroSection';
 import { FeaturesSection } from '../components/landing/FeaturesSection';
 import { CTASection } from '../components/landing/CTASection';
 import { Footer } from '../components/landing/Footer';
+import { OnboardingTutorial } from '../components/onboarding/OnboardingTutorial';
+import { useFirstVisitTutorial } from '../components/onboarding/useFirstVisitTutorial';
 
 export default function Home() {
   const [authMode, setAuthMode] = useState(null);
+  const { showTutorial, closeTutorial, isLoading } = useFirstVisitTutorial();
 
   if (authMode) {
     return (
@@ -47,6 +50,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+      {!isLoading && showTutorial && (
+        <OnboardingTutorial 
+          onClose={closeTutorial}
+          onGetStarted={() => setAuthMode('register')}
+        />
+      )}
       <Navbar 
         onLogin={() => setAuthMode('login')}
         onRegister={() => setAuthMode('register')}

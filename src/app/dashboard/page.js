@@ -14,6 +14,7 @@ import { TransferModal } from '../../components/wallet/TransferModal';
 import { INRTransferModal } from '../../components/wallet/INRTransferModal';
 import { Button } from '../../components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/Card';
+import { HelpButton } from '../../components/onboarding/HelpButton';
 
 function DashboardContent() {
   const [depositModalOpen, setDepositModalOpen] = useState(false);
@@ -206,6 +207,7 @@ export default function Dashboard() {
   return (
     <WalletProvider>
       <DashboardContent />
+      <HelpButton />
     </WalletProvider>
   );
 }
