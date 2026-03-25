@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '../components/auth/AuthProvider';
+import { TransactionStatusProvider } from '../components/transaction/TransactionStatusContext';
+import { TransactionStatusDisplay } from '../components/transaction/TransactionStatusDisplay';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,17 +27,20 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          {children}
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: '#363636',
-                color: '#fff',
-              },
-            }}
-          />
+          <TransactionStatusProvider>
+            {children}
+            <TransactionStatusDisplay />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: '#363636',
+                  color: '#fff',
+                },
+              }}
+            />
+          </TransactionStatusProvider>
         </AuthProvider>
       </body>
     </html>
