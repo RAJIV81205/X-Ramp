@@ -351,7 +351,7 @@ pub fn is_attestation_used(env: Env, transaction_id: String) -> bool
 - Improved UI clarity
 - Added step-by-step instructions
 
-**Commit ID:** `abc123`
+**Commit ID:** `e3954425f282de4b103bf3cd62a50f88d71218ab`
 
 ---
 
