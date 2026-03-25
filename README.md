@@ -17,6 +17,7 @@ X-Ramp is a revolutionary crypto wallet application built on **Stellar Soroban**
 - [ZK Circuits](#-zk-circuits)
 - [Smart Contract](#-smart-contract)
 - [Future Scope](#-future-scope)
+- [User Feedback](#-user-feedback--improvements)
 - [Contributing](#-contributing)
 
 ## 🎯 Problem Statement
