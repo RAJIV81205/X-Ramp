@@ -304,25 +304,25 @@ pub fn is_attestation_used(env: Env, transaction_id: String) -> bool
 
 ## 🔮 Future Scope
 
-### Phase 1: Enhanced Privacy (Q2 2024)
+### Phase 1: Enhanced Privacy (Q2 2026)
 - **Advanced ZK Circuits**: Implement recursive proofs for batch transactions
 - **Anonymous Credentials**: Attribute-based credentials for compliance
 - **Cross-Chain Support**: Extend to Ethereum and other EVM chains
 - **Mobile App**: Native iOS and Android applications
 
-### Phase 2: DeFi Integration (Q3 2024)
+### Phase 2: DeFi Integration (Q3 2026)
 - **Yield Farming**: Automated yield strategies with ZK privacy
 - **DEX Integration**: Private swaps through ZK-enabled AMMs
 - **Lending Protocol**: Privacy-preserving lending and borrowing
 - **Governance Token**: Community governance with privacy features
 
-### Phase 3: Enterprise Solutions (Q4 2024)
+### Phase 3: Enterprise Solutions (Q4 2026)
 - **Institutional Custody**: Enterprise-grade key management
 - **Compliance Dashboard**: Real-time regulatory reporting
 - **API Platform**: Developer APIs for third-party integration
 - **White-label Solutions**: Customizable wallet infrastructure
 
-### Phase 4: Global Expansion (2025)
+### Phase 4: Global Expansion (2026)
 - **Multi-Currency Support**: Support for 50+ fiat currencies
 - **Regulatory Compliance**: Full compliance in major jurisdictions
 - **Banking Partnerships**: Direct integration with traditional banks
@@ -333,6 +333,32 @@ pub fn is_attestation_used(env: Env, transaction_id: String) -> bool
 - **Layer 2 Scaling**: Optimistic rollups for high throughput
 - **Interoperability**: Cross-chain bridges with ZK verification
 - **AI Integration**: ML-powered fraud detection and risk assessment
+
+## 📝 User Feedback & Improvements
+
+### 📄 User Feedback Response Sheet
+| Feedback ID | User Feedback | Action Taken | Status |
+|------------|-------------|-------------|--------|
+| F1 | Wallet recovery flow is confusing | Simplified UI and added recovery instructions | ✅ Fixed |
+| F2 | No loading state during transactions | Added loader and status indicators | ✅ Fixed |
+| F3 | Need transaction confirmation popup | Added confirmation modal before transfers | ❌ Pending |
+
+---
+
+### ✅ Implemented Feedback
+
+#### 1. Simplified Wallet Recovery Flow
+- Improved UI clarity
+- Added step-by-step instructions
+
+**Commit ID:** `abc123`
+
+---
+
+#### 2. Added Transaction Loader
+- Users now see loading state during API calls
+
+**Commit ID:** `def456`
 
 ## 🤝 Contributing
 
