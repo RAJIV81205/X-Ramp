@@ -12,6 +12,7 @@ X-Ramp is a revolutionary crypto wallet application built on **Stellar Soroban**
 - [Architecture](#️-architecture)
 - [Contract Address](#-contract-address)
 - [Screenshots](#-screenshots)
+- [Metrics](#-metrics)
 - [Quick Start](#-quick-start)
 - [Technology Stack](#-technology-stack)
 - [ZK Circuits](#-zk-circuits)
@@ -128,6 +129,12 @@ CDD3IXWBEYPF4VIOTHV7STV3Q2QS3CPJELUSZXRUBZMKZIQD3QN355EU
 ![Core Features](public/Feature.png)
 *Advanced cryptographic infrastructure powering keyless wallets and trustless fiat ramps*
 
+## 📊 Metrics
+
+Attach your metrics screenshot below:
+
+![Metrics Dashboard](public/metrics-screenshot.png)
+*Replace `public/metrics-screenshot.png` with your final metrics image path/name.*
 
 
 ## 🚀 Quick Start
