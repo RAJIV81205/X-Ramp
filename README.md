@@ -133,9 +133,7 @@ CDD3IXWBEYPF4VIOTHV7STV3Q2QS3CPJELUSZXRUBZMKZIQD3QN355EU
 
 Attach your metrics screenshot below:
 
-![Metrics Dashboard](public/metrics-screenshot.png)
-*Replace `public/metrics-screenshot.png` with your final metrics image path/name.*
-
+<img width="1309" height="582" alt="Screenshot 2026-04-25 at 10 19 51 AM" src="https://github.com/user-attachments/assets/c07dd03d-1a2b-4880-ae10-cf0f16da5e9f" />
 
 ## 🚀 Quick Start
 
