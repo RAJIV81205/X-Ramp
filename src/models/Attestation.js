@@ -57,7 +57,6 @@ const AttestationSchema = new mongoose.Schema({
 });
 
 // Indexes for faster queries
-AttestationSchema.index({ transactionId: 1 });
 AttestationSchema.index({ userAddress: 1, createdAt: -1 });
 AttestationSchema.index({ userId: 1, used: 1 });
 
