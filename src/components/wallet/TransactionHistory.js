@@ -1,34 +1,32 @@
 'use client';
 
-import { useEffect } from 'react';
-import { ArrowUpRight, ArrowDownLeft, Send, RefreshCw } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowDownLeft, ArrowUpRight, RefreshCw, Search, Send } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
 import { Button } from '../ui/Button';
+import { Input } from '../ui/Input';
 import { useWallet } from './WalletProvider';
+import { useExperience } from '../preferences/ExperienceProvider';
+import { shortAddress } from '../../lib/ux';
 
 const formatAmount = (transaction) => {
-  // Check if this is an INR transaction by looking at the description or method
-  const isINRTransaction = transaction.method === 'inr_transfer' || 
-                          transaction.method === 'auto_inr_transfer' || 
-                          transaction.inrAmount ||
-                          (transaction.description && transaction.description.includes('₹')) ||
-                          (transaction.description && transaction.description.includes('INR'));
-  
-  // For sent INR transactions, show INR amount
+  const isINRTransaction = transaction.method === 'inr_transfer' ||
+    transaction.method === 'auto_inr_transfer' ||
+    transaction.inrAmount ||
+    transaction.description?.includes('₹') ||
+    transaction.description?.includes('INR');
+
   if (isINRTransaction && transaction.type === 'transfer_sent') {
-    // Try to extract INR amount from description if inrAmount field is not available
     if (transaction.inrAmount) {
       return `₹${transaction.inrAmount}`;
-    } else if (transaction.description) {
-      // Extract INR amount from description like "Auto-completed: ₹121 → 6.2051282 XLM"
-      const inrMatch = transaction.description.match(/₹(\d+(?:\.\d+)?)/);
-      if (inrMatch) {
-        return `₹${inrMatch[1]}`;
-      }
+    }
+
+    const inrMatch = transaction.description?.match(/₹(\d+(?:\.\d+)?)/);
+    if (inrMatch) {
+      return `₹${inrMatch[1]}`;
     }
   }
-  
-  // For received INR transactions or regular XLM transactions, show XLM amount
+
   return `${transaction.amount} XLM`;
 };
 
@@ -94,57 +92,107 @@ const formatDate = (dateString) => {
   const diffTime = Math.abs(now - date);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays === 1) {
-    return 'Today';
-  } else if (diffDays === 2) {
-    return 'Yesterday';
-  } else if (diffDays <= 7) {
-    return `${diffDays - 1} days ago`;
-  } else {
-    return date.toLocaleDateString();
-  }
+  if (diffDays === 1) return 'Today';
+  if (diffDays === 2) return 'Yesterday';
+  if (diffDays <= 7) return `${diffDays - 1} days ago`;
+  return date.toLocaleDateString();
 };
 
 export function TransactionHistory() {
   const { transactions, loading, loadTransactions } = useWallet();
+  const { t } = useExperience();
+  const [query, setQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [typeFilter, setTypeFilter] = useState('all');
 
   useEffect(() => {
     loadTransactions();
   }, [loadTransactions]);
 
-  const handleRefresh = () => {
-    loadTransactions();
-  };
+  const filteredTransactions = transactions.filter((transaction) => {
+    const matchesQuery = !query || [
+      transaction.description,
+      transaction.method,
+      transaction.hash,
+      transaction.recipientEmail,
+      transaction.senderEmail,
+    ]
+      .filter(Boolean)
+      .some((value) => value.toLowerCase().includes(query.toLowerCase()));
+
+    const matchesStatus = statusFilter === 'all' || transaction.status === statusFilter;
+    const matchesType = typeFilter === 'all' || transaction.type === typeFilter;
+
+    return matchesQuery && matchesStatus && matchesType;
+  });
 
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-        <CardTitle className="text-zinc-950">Recent Transactions</CardTitle>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handleRefresh}
-          disabled={loading}
-        >
+    <Card className="dark-surface">
+      <CardHeader className="flex flex-col gap-4 pb-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
+        <div>
+          <CardTitle className="text-zinc-950">{t('dashboard.recentTransactions')}</CardTitle>
+          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
+            Search and filter wallet activity faster.
+          </p>
+        </div>
+
+        <Button variant="ghost" size="icon" onClick={loadTransactions} disabled={loading} aria-label="Refresh transactions">
           <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
         </Button>
       </CardHeader>
-      <CardContent>
-        {transactions.length === 0 ? (
-          <div className="text-center py-8">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+
+      <CardContent className="space-y-4">
+        <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_160px_160px]">
+          <div className="relative">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted-foreground)]" />
+            <Input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search by email, hash, or description"
+              className="pl-10"
+            />
+          </div>
+
+          <select
+            value={statusFilter}
+            onChange={(event) => setStatusFilter(event.target.value)}
+            className="h-10 rounded-xs border border-zinc-200 bg-white px-3 text-sm text-zinc-900"
+          >
+            <option value="all">All statuses</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+            <option value="failed">Failed</option>
+            <option value="processing">Processing</option>
+          </select>
+
+          <select
+            value={typeFilter}
+            onChange={(event) => setTypeFilter(event.target.value)}
+            className="h-10 rounded-xs border border-zinc-200 bg-white px-3 text-sm text-zinc-900"
+          >
+            <option value="all">All types</option>
+            <option value="deposit">Deposits</option>
+            <option value="withdrawal">Withdrawals</option>
+            <option value="transfer_sent">Sent</option>
+            <option value="transfer_received">Received</option>
+          </select>
+        </div>
+
+        {filteredTransactions.length === 0 ? (
+          <div className="py-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
               <ArrowUpRight className="h-8 w-8 text-gray-700" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
-              No transactions yet
+            <h3 className="mb-2 text-lg font-medium text-gray-900">
+              No matching transactions
             </h3>
             <p className="text-zinc-800">
-              Your transaction history will appear here once you start using your wallet.
+              Try another filter, or start sending funds to build your activity log.
             </p>
           </div>
         ) : (
           <div className="space-y-4">
-            {transactions.map((transaction) => {
+            {filteredTransactions.map((transaction) => {
               const Icon = getTransactionIcon(transaction.type);
               const colorClass = getTransactionColor(transaction.type);
               const sign = getTransactionSign(transaction.type);
@@ -152,10 +200,10 @@ export function TransactionHistory() {
               return (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-4 border rounded-xs hover:bg-zinc-50 transition-colors text-zinc-900 border-zinc-200"
+                  className="flex flex-col gap-3 rounded-xs border border-zinc-200 p-4 text-left transition-colors hover:bg-zinc-50 md:flex-row md:items-center md:justify-between"
                 >
-                  <div className="flex items-center space-x-3">
-                    <div className={`p-2 rounded-full bg-gray-100 ${colorClass}`}>
+                  <div className="flex items-start space-x-3">
+                    <div className={`rounded-full bg-gray-100 p-2 ${colorClass}`}>
                       <Icon className="h-4 w-4" />
                     </div>
                     <div>
@@ -165,15 +213,18 @@ export function TransactionHistory() {
                       <p className="text-sm text-zinc-800">
                         {transaction.description || transaction.method || 'Transaction'}
                       </p>
-                      {transaction.recipientEmail && (
+                      {(transaction.recipientEmail || transaction.senderEmail) && (
                         <p className="text-xs text-gray-700">
-                          To: {transaction.recipientEmail}
+                          {transaction.recipientEmail ? `To: ${transaction.recipientEmail}` : `From: ${transaction.senderEmail}`}
                         </p>
                       )}
+                      <p className="mt-1 text-xs text-[var(--muted-foreground)]">
+                        {shortAddress(transaction.hash, 10, 8)}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="text-right">
+                  <div className="text-left md:text-right">
                     <p className={`font-medium ${colorClass}`}>
                       {sign}{formatAmount(transaction)}
                     </p>
