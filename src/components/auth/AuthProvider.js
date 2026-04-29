@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import { friendlyErrorMessage } from '../../lib/ux';
 
 const AuthContext = createContext({});
 
@@ -67,8 +68,9 @@ export function AuthProvider({ children }) {
       
       return { success: true };
     } catch (error) {
-      toast.error(error.message);
-      return { success: false, error: error.message };
+      const message = friendlyErrorMessage(error.message);
+      toast.error(message);
+      return { success: false, error: message };
     }
   };
 
@@ -104,8 +106,9 @@ export function AuthProvider({ children }) {
       
       return { success: true };
     } catch (error) {
-      toast.error(error.message);
-      return { success: false, error: error.message };
+      const message = friendlyErrorMessage(error.message);
+      toast.error(message);
+      return { success: false, error: message };
     }
   };
 

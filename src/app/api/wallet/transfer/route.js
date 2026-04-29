@@ -43,7 +43,7 @@ export async function POST(request) {
 
     if (amount < 1) {
       return NextResponse.json(
-        { error: 'Minimum transfer amount is $1' },
+        { error: 'Minimum transfer amount is 1 XLM' },
         { status: 400 }
       );
     }

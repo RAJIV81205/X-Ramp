@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState, useCallback } from 'rea
 import { useAuth } from '../auth/AuthProvider';
 import { XRampContract, formatBalance, getAccountBalance } from '../../lib/stellar';
 import toast from 'react-hot-toast';
+import { friendlyErrorMessage } from '../../lib/ux';
 
 const WalletContext = createContext({});
 
@@ -70,7 +71,7 @@ export function WalletProvider({ children }) {
       
     } catch (error) {
       console.error('Failed to load wallet data:', error);
-      toast.error('Failed to load wallet data');
+      toast.error(friendlyErrorMessage('Failed to load wallet data'));
     } finally {
       setLoading(false);
     }
@@ -133,7 +134,7 @@ export function WalletProvider({ children }) {
       
       return data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(friendlyErrorMessage(error.message));
       throw error;
     } finally {
       setLoading(false);
@@ -175,7 +176,7 @@ export function WalletProvider({ children }) {
       
       return data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(friendlyErrorMessage(error.message));
       throw error;
     } finally {
       setLoading(false);
@@ -218,7 +219,7 @@ export function WalletProvider({ children }) {
       
       return data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(friendlyErrorMessage(error.message));
       throw error;
     } finally {
       setLoading(false);
@@ -251,7 +252,7 @@ export function WalletProvider({ children }) {
       
       return true;
     } catch (error) {
-      toast.error(`Funding failed: ${error.message}`, { id: 'funding' });
+      toast.error(`Funding failed: ${friendlyErrorMessage(error.message)}`, { id: 'funding' });
       throw error;
     } finally {
       setLoading(false);
@@ -300,7 +301,7 @@ export function WalletProvider({ children }) {
       await loadWalletData();
       return data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(friendlyErrorMessage(error.message));
       throw error;
     } finally {
       setLoading(false);

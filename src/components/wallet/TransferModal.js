@@ -16,6 +16,7 @@ export function TransferModal({ isOpen, onClose }) {
   const [errors, setErrors] = useState({});
 
   const { transfer, stellarBalance } = useWallet();
+  const estimatedNetworkFee = 0.00001;
 
   const validateForm = () => {
     const newErrors = {};
@@ -33,7 +34,7 @@ export function TransferModal({ isOpen, onClose }) {
     } else if (isNaN(numAmount) || numAmount <= 0) {
       newErrors.amount = 'Amount must be a positive number';
     } else if (numAmount < 1) {
-      newErrors.amount = 'Minimum transfer is $1';
+      newErrors.amount = 'Minimum transfer is 1 XLM';
     } else if (numAmount > availableBalance) {
       newErrors.amount = 'Insufficient balance';
     }
@@ -91,6 +92,10 @@ export function TransferModal({ isOpen, onClose }) {
           <div className="flex justify-between items-center">
             <span className="text-sm text-zinc-800">Available Balance</span>
             <span className="font-medium">{stellarBalance} XLM</span>
+          </div>
+          <div className="mt-2 flex justify-between items-center text-xs text-zinc-500">
+            <span>Estimated Stellar fee</span>
+            <span>{estimatedNetworkFee} XLM</span>
           </div>
         </div>
 
