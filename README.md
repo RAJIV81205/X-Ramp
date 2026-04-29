@@ -61,6 +61,11 @@ Core features:
 
 ![Core Features](public/Feature.png)
 
+Metrics:
+
+<img width="1309" height="582" alt="Screenshot 2026-04-25 at 10 19 51 AM" src="https://github.com/user-attachments/assets/c07dd03d-1a2b-4880-ae10-cf0f16da5e9f" />
+
+
 ## User Feedback
 
 Feedback sheet: https://docs.google.com/spreadsheets/d/1S3-kM74LgE0yA43Fy7tXBUe5NU5QBP2Lh7D8qQoxh-w/edit?usp=sharing
