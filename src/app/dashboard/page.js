@@ -9,6 +9,7 @@ import { useExperience } from '../../components/preferences/ExperienceProvider';
 import { WalletProvider, useWallet } from '../../components/wallet/WalletProvider';
 import { BalanceCard } from '../../components/wallet/BalanceCard';
 import { TransactionHistory } from '../../components/wallet/TransactionHistory';
+import { HelpCenterCard } from '../../components/dashboard/HelpCenterCard';
 import { WalletInsights } from '../../components/dashboard/WalletInsights';
 import { NotificationPreferences } from '../../components/dashboard/NotificationPreferences';
 import { DepositModal } from '../../components/wallet/DepositModal';
@@ -158,6 +159,7 @@ function DashboardContent() {
             </Card>
 
             <NotificationPreferences />
+            <HelpCenterCard />
           </div>
 
           {/* Right Column - Transaction History */}
