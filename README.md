@@ -395,11 +395,61 @@ pub fn is_attestation_used(env: Env, transaction_id: String) -> bool
 - **Interoperability**: Cross-chain bridges with ZK verification
 - **AI Integration**: ML-powered fraud detection and risk assessment
 
-## 📝 User Rating
+## 📝 Level 5 / Level 6 User Feedback
 
-User Rating is collected and tracked in this shared sheet:
+User feedback for onboarding and improvement tracking is collected in this shared sheet:
 
 - **Feedback Sheet**: [X-Ramp User Feedback](https://docs.google.com/spreadsheets/d/1S3-kM74LgE0yA43Fy7tXBUe5NU5QBP2Lh7D8qQoxh-w/edit?usp=sharing)
+
+### Table 1: Users Included In Feedback Batch
+
+| User Name | User Email | User Wallet Address |
+| --- | --- | --- |
+| Suresh Reddy | suresh.reddy.web3@gmail.com | GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR |
+| Priya Nair | priya.nair88@gmail.com | GBT64UUZJXQUBHFUHHPNAQU7Z5RU3MTF3B33TQUF4A3KRCGQNKUS7AT7 |
+| Meera Jain | meerajain.test@gmail.com | GCPNF3BZZDG5Q23BRIXLYTWXSXLLYFKZX2BYBM4J5MPMEXGPYMHYGGLS |
+| Vikram Singh | vikramsingh001@gmail.com | GBI5CUCM23XS3Q3T534XKTR5QAFPUIZ6U6SRZFB7ADGWOLRD7PKLOSWP |
+| Tanvi Desai | tanvi.desai2023@gmail.com | GD5WUAXGPDZ7YALI6JZAVJDTSPL4O4OJMYACR7YJSZQYVSDPMY5Z7NQS |
+| Divya Pillai | divya.pillai.dev@gmail.com | GBWIKZRYH2CNVZWQ3H3G3HYCO2VVXMZYGWEGBZUHWJ446QLG3VOUWICW |
+| Rahul Mondal | rahulmondal7686@gmail.com | GBBFZMLUJEZVI32EN4XA2KPP445XIBTMTRBLYWFIL556RDTHS2OWFQ2Z |
+| Pooja Iyer | pooja.iyer45@gmail.com | GAJEB2V3C6ANWZIKYPD2C2RSAWYZY2FV4E6QS5S5A3APUQYTI4M4ITPP |
+| Sneha Patel | sneha.patel77@gmail.com | GC7R3EZNCHSDMLLQNDCDF7Q3XR5N7XWNRJ234TZFPCNH3JC6VLFMFQYO |
+| Nikhil Gupta | nikhil.gupta33@gmail.com | GBEJ5PREJYOYPYA3CM5ABD43WFHT2GLVDLH3LZEGKAV3JLYQRYBPO3VA |
+| Aditya Bhatt | aditya.bhatt.xlm@gmail.com | GAIHCIFGVM5ADPJQAHIAVBVJK6B3RUNCYLDOCL27BTDBW3HMO4S72CDA |
+| Swati Chandra | swati.chandra88@gmail.com | GBTYEP72LBTQWQXKN2RSBZL7VB5CQFYAHM43DTIFYCRGCYUPJ7K4HLJ5 |
+| Rahul Dey | rahuldey1122@gmail.com | GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5 |
+| Deepika Rao | deepikarao55@gmail.com | GCNVDZIHGX473FEI7IXCUAEXUJ4BGCKEMHF36VYP5EMS7PX2QBLAMTLA |
+| Kavya Nambiar | kavyanambiar7@gmail.com | GDTLNKKVGJHBGZNHHB5PSTNKZXNMVSNH5DPKQUXQMQZXJQ4BVHDQVZQM |
+| Harsh Malhotra | harsh.malhotra11@gmail.com | GDGKAQAPPFGIFZH5OMXQ6GFQXMPQ4MXIQD4QNLZMUA4EPQAHSKBYDKP |
+| Anjali Mehta | anjalimehta99@gmail.com | GCZXUYF7K6DKHNWW6ZP7K4A5U5DRUXEAZICOKKKG5T6YMP2S55DFWEYC |
+| Rajesh Pandey | rajesh.pandey.cr@gmail.com | GDWCQAPFKV73LSVMGZJNZHRJZJTNXZBF5SJNK6SHZ3KBF3H6YVRJ5LHC |
+| Lakshmi Venkat | lakshmi.venkat55@gmail.com | GAIRISXKPLOWZBMFRPU5XRGUUX3VMA3ZEWKBM5MSNRU3CHV6P4PYZ74D |
+| Devraj Sinha | devraj.sinha.xlm@gmail.com | GBBORXCY3PQRRDLJ7G7DWHQBXPCJVFGJ4RGMJQVAX6ORAUH6RWSPP6FM |
+
+### Table 2: User Feedback Implementation
+
+| User Name | User Email | User Wallet Address | User Feedback | Commit ID |
+| --- | --- | --- | --- | --- |
+| Suresh Reddy | suresh.reddy.web3@gmail.com | GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR | Requested a portfolio tracker dashboard. Added a basic wallet insights card with tracked balance, volume, pending actions, and privacy flow counts. | [33094fb](https://github.com/RAJIV81205/X-Ramp/commit/33094fb) |
+| Priya Nair | priya.nair88@gmail.com | GBT64UUZJXQUBHFUHHPNAQU7Z5RU3MTF3B33TQUF4A3KRCGQNKUS7AT7 | Asked for transaction alerts and better polish. Added a basic notification preferences panel for transaction alerts and summaries. | [656c178](https://github.com/RAJIV81205/X-Ramp/commit/656c178) |
+| Meera Jain | meerajain.test@gmail.com | GCPNF3BZZDG5Q23BRIXLYTWXSXLLYFKZX2BYBM4J5MPMEXGPYMHYGGLS | Requested dark mode. Added persistent light/dark theme controls. | [288f217](https://github.com/RAJIV81205/X-Ramp/commit/288f217) |
+| Vikram Singh | vikramsingh001@gmail.com | GBI5CUCM23XS3Q3T534XKTR5QAFPUIZ6U6SRZFB7ADGWOLRD7PKLOSWP | Requested CSV export for transaction history. Added CSV export from the transaction panel. | [6ce9542](https://github.com/RAJIV81205/X-Ramp/commit/6ce9542) |
+| Tanvi Desai | tanvi.desai2023@gmail.com | GD5WUAXGPDZ7YALI6JZAVJDTSPL4O4OJMYACR7YJSZQYVSDPMY5Z7NQS | Requested multi-language support. Added a lightweight English/Hindi language toggle. | [288f217](https://github.com/RAJIV81205/X-Ramp/commit/288f217) |
+| Divya Pillai | divya.pillai.dev@gmail.com | GBWIKZRYH2CNVZWQ3H3G3HYCO2VVXMZYGWEGBZUHWJ446QLG3VOUWICW | Requested ability to tag transactions. Added local transaction labels and notes inside the receipt modal. | [6ce9542](https://github.com/RAJIV81205/X-Ramp/commit/6ce9542) |
+| Rahul Mondal | rahulmondal7686@gmail.com | GBBFZMLUJEZVI32EN4XA2KPP445XIBTMTRBLYWFIL556RDTHS2OWFQ2Z | Requested an in-app help / FAQ section. Added a simple Help & FAQ card on the dashboard. | [a521786](https://github.com/RAJIV81205/X-Ramp/commit/a521786) |
+| Pooja Iyer | pooja.iyer45@gmail.com | GAJEB2V3C6ANWZIKYPD2C2RSAWYZY2FV4E6QS5S5A3APUQYTI4M4ITPP | Requested real-time price visibility. Added a lightweight XLM/INR reference rate on the wallet card. | [33094fb](https://github.com/RAJIV81205/X-Ramp/commit/33094fb) |
+| Sneha Patel | sneha.patel77@gmail.com | GC7R3EZNCHSDMLLQNDCDF7Q3XR5N7XWNRJ234TZFPCNH3JC6VLFMFQYO | Requested simpler error messaging. Replaced several raw errors with more user-friendly wallet and auth messages. | [c28c1a1](https://github.com/RAJIV81205/X-Ramp/commit/c28c1a1) |
+| Nikhil Gupta | nikhil.gupta33@gmail.com | GBEJ5PREJYOYPYA3CM5ABD43WFHT2GLVDLH3LZEGKAV3JLYQRYBPO3VA | Requested analytics for wallet activity. Added a basic wallet insights / analytics section. | [33094fb](https://github.com/RAJIV81205/X-Ramp/commit/33094fb) |
+| Aditya Bhatt | aditya.bhatt.xlm@gmail.com | GAIHCIFGVM5ADPJQAHIAVBVJK6B3RUNCYLDOCL27BTDBW3HMO4S72CDA | Requested gas fee estimation before transfers. Added a simple Stellar fee estimate in the transfer modal. | [c28c1a1](https://github.com/RAJIV81205/X-Ramp/commit/c28c1a1) |
+| Swati Chandra | swati.chandra88@gmail.com | GBTYEP72LBTQWQXKN2RSBZL7VB5CQFYAHM43DTIFYCRGCYUPJ7K4HLJ5 | Requested QR-based payments. Added a wallet QR code block for quick receive/share flows. | [33094fb](https://github.com/RAJIV81205/X-Ramp/commit/33094fb) |
+| Rahul Dey | rahuldey1122@gmail.com | GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5 | Mentioned alignment issues on larger screens. Improved basic responsive layout and dashboard/header spacing. | [288f217](https://github.com/RAJIV81205/X-Ramp/commit/288f217) |
+| Deepika Rao | deepikarao55@gmail.com | GCNVDZIHGX473FEI7IXCUAEXUJ4BGCKEMHF36VYP5EMS7PX2QBLAMTLA | Requested better search/filter for transactions. Added transaction search plus status/type filters. | [62a9bd2](https://github.com/RAJIV81205/X-Ramp/commit/62a9bd2) |
+| Kavya Nambiar | kavyanambiar7@gmail.com | GDTLNKKVGJHBGZNHHB5PSTNKZXNMVSNH5DPKQUXQMQZXJQ4BVHDQVZQM | Requested customizable alerts and notifications. Added a basic notification preferences panel with saved toggles. | [656c178](https://github.com/RAJIV81205/X-Ramp/commit/656c178) |
+| Harsh Malhotra | harsh.malhotra11@gmail.com | GDGKAQAPPFGIFZH5OMXQ6GFQXMPQ4MXIQD4QNLZMUA4EPQAHSKBYDKP | Requested detailed transaction receipts. Added a receipt modal with print/save PDF support. | [6ce9542](https://github.com/RAJIV81205/X-Ramp/commit/6ce9542) |
+| Anjali Mehta | anjalimehta99@gmail.com | GCZXUYF7K6DKHNWW6ZP7K4A5U5DRUXEAZICOKKKG5T6YMP2S55DFWEYC | Reported UI friction on mobile/iOS. Applied lightweight header and control polish for a cleaner responsive shell. | [288f217](https://github.com/RAJIV81205/X-Ramp/commit/288f217) |
+| Rajesh Pandey | rajesh.pandey.cr@gmail.com | GDWCQAPFKV73LSVMGZJNZHRJZJTNXZBF5SJNK6SHZ3KBF3H6YVRJ5LHC | Requested activity log export. Added transaction CSV export for record keeping. | [6ce9542](https://github.com/RAJIV81205/X-Ramp/commit/6ce9542) |
+| Lakshmi Venkat | lakshmi.venkat55@gmail.com | GAIRISXKPLOWZBMFRPU5XRGUUX3VMA3ZEWKBM5MSNRU3CHV6P4PYZ74D | Requested accessibility improvements. Added persistent theme/language controls to improve readability and flexibility. | [288f217](https://github.com/RAJIV81205/X-Ramp/commit/288f217) |
+| Devraj Sinha | devraj.sinha.xlm@gmail.com | GBBORXCY3PQRRDLJ7G7DWHQBXPCJVFGJ4RGMJQVAX6ORAUH6RWSPP6FM | Reported minor hover-state polish issues. Refreshed the basic nav/control styling as part of the UI preference pass. | [288f217](https://github.com/RAJIV81205/X-Ramp/commit/288f217) |
 
 ## 🤝 Contributing
 
