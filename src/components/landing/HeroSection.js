@@ -2,14 +2,17 @@
 
 import { motion } from 'motion/react';
 import { Shield } from 'lucide-react';
+import { useExperience } from '../preferences/ExperienceProvider';
 
 export const HeroSection = ({ onRegister }) => {
-  return (
-    <section className="relative py-50 overflow-hidden ">
-      {/* Dark Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(30,58,138,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(30,58,138,0.05)_1px,transparent_1px)] bg-size-[40px_40px] [radial-gradient(ellipse_80%_80%_at_50%_50%,#000_10%,transparent_100%)]"></div>
+  const { t } = useExperience();
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+  return (
+    <section className="relative overflow-hidden pb-24 pt-40 md:pb-32 md:pt-50">
+      {/* Dark Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(30,58,138,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(30,58,138,0.05)_1px,transparent_1px)] bg-size-[40px_40px] [radial-gradient(ellipse_80%_80%_at_50%_50%,#dbeafe_10%,transparent_100%)]"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
         {/* Left Side: Text Content */}
         <div className="flex flex-col items-start text-left">
 
@@ -18,11 +21,11 @@ export const HeroSection = ({ onRegister }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-zinc-950 mb-6 max-w-2xl leading-[1.1]"
+            className="text-4xl md:text-7xl font-bold tracking-tight text-[var(--foreground)] mb-6 max-w-2xl leading-[1.1]"
           >
-            The world&apos;s best <br />
+            {t('landing.headline')} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-zinc-950 via-zinc-800 to-gray-500">
-              ZK Fiat Ramp
+              {t('landing.subheadline')}
             </span>
           </motion.h1>
 
@@ -30,10 +33,9 @@ export const HeroSection = ({ onRegister }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-500 mb-10 max-w-xl leading-relaxed"
+            className="text-lg md:text-xl text-[var(--muted-foreground)] mb-10 max-w-xl leading-relaxed"
           >
-            Proof based liquidity. Onboard users directly to Stellar without seed phrases.
-            Cryptographically verifable, completely trustless.
+            {t('landing.body')}
           </motion.p>
 
           {/* Buttons */}
@@ -47,13 +49,13 @@ export const HeroSection = ({ onRegister }) => {
               onClick={onRegister}
               className="h-12 px-8 bg-zinc-950 text-white font-semibold rounded-xs hover:bg-gray-900 transition-all flex items-center gap-2"
             >
-              Create Wallet
+              {t('common.createWallet')}
             </button>
             <button
               onClick={onRegister}
-              className="h-12 px-8  text-blue-600 bg-zinc-50 border border-blue-00 hover:bg-blue-100  font-semibold rounded-xs transition-all"
+              className="h-12 px-8 text-blue-600 bg-zinc-50 border border-blue-100 hover:bg-blue-100 font-semibold rounded-xs transition-all"
             >
-              Login
+              {t('common.login')}
             </button>
           </motion.div>
         </div>
@@ -64,7 +66,7 @@ export const HeroSection = ({ onRegister }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative w-full aspect-4/3 bg-gray-50 rounded-lg border border-gray-400 shadow-2xl flex items-center justify-center overflow-hidden group"
+            className="relative w-full aspect-4/3 bg-[var(--card-background)] rounded-lg border border-[var(--border-color)] shadow-2xl flex items-center justify-center overflow-hidden group"
           >
             {/* Inner Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]" />

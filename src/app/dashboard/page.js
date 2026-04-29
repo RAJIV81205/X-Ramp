@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from "next/image"
+import Image from 'next/image';
 import { Plus, Minus, Send, LogOut, User, IndianRupee, Zap } from 'lucide-react';
 import { useAuth } from '../../components/auth/AuthProvider';
+import { useExperience } from '../../components/preferences/ExperienceProvider';
 import { WalletProvider, useWallet } from '../../components/wallet/WalletProvider';
 import { BalanceCard } from '../../components/wallet/BalanceCard';
 import { TransactionHistory } from '../../components/wallet/TransactionHistory';
@@ -16,6 +17,7 @@ import { SponsoredTransferModal } from '../../components/wallet/SponsoredTransfe
 import { Button } from '../../components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/Card';
 import { HelpButton } from '../../components/onboarding/HelpButton';
+import { PreferenceControls } from '../../components/preferences/PreferenceControls';
 
 function DashboardContent() {
   const [depositModalOpen, setDepositModalOpen] = useState(false);
@@ -25,7 +27,8 @@ function DashboardContent() {
   const [sponsoredTransferModalOpen, setSponsoredTransferModalOpen] = useState(false);
   
   const { user, logout } = useAuth();
-  const { stellarBalance, loadWalletData } = useWallet();
+  const { t } = useExperience();
+  const { loadWalletData } = useWallet();
 
   const handleTransferComplete = () => {
     // Refresh wallet data after successful transfer
@@ -35,17 +38,18 @@ function DashboardContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[var(--background)]">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="border-b border-[var(--border-color)] bg-[var(--card-background)] shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Image src="/xramp-logo.png" width={100} height={50} alt='logo' />
+          <div className="flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <Image src="/xramp-logo.png" width={100} height={50} alt="logo" />
 
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <PreferenceControls compact />
               <div className="flex items-center space-x-2 text-sm text-zinc-800">
                 <User className="h-4 w-4" />
-                <span>{user?.email}</span>
+                <span className="max-w-[180px] truncate sm:max-w-none">{user?.email}</span>
               </div>
               <Button
                 variant="ghost"
@@ -64,11 +68,11 @@ function DashboardContent() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Welcome back!
+          <h1 className="mb-2 text-2xl font-bold text-gray-900">
+            {t('dashboard.welcome')}
           </h1>
           <p className="text-zinc-800">
-            Manage your keyless crypto wallet with zero-knowledge privacy.
+            {t('dashboard.subtitle')}
           </p>
         </div>
 
@@ -81,7 +85,7 @@ function DashboardContent() {
             {/* Quick Actions */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-zinc-950">Quick Actions</CardTitle>
+                <CardTitle className="text-zinc-950">{t('dashboard.quickActions')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <Button
@@ -133,7 +137,7 @@ function DashboardContent() {
             {/* Wallet Info */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-zinc-950">Wallet Info</CardTitle>
+                <CardTitle className="text-zinc-950">{t('dashboard.walletInfo')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-zinc-500">
                 <div>
@@ -153,7 +157,7 @@ function DashboardContent() {
           </div>
 
           {/* Right Column - Transaction History */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 space-y-6">
             <TransactionHistory />
           </div>
         </div>
@@ -191,6 +195,7 @@ function DashboardContent() {
 
 export default function Dashboard() {
   const { user, loading } = useAuth();
+  const { t } = useExperience();
   const router = useRouter();
 
   useEffect(() => {
@@ -204,7 +209,7 @@ export default function Dashboard() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-zinc-800">Loading your wallet...</p>
+          <p className="text-zinc-800">{t('common.loadingWallet')}</p>
         </div>
       </div>
     );
@@ -214,7 +219,7 @@ export default function Dashboard() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-zinc-800">Redirecting...</p>
+          <p className="text-zinc-800">{t('common.redirecting')}</p>
         </div>
       </div>
     );

@@ -5,6 +5,7 @@ import { useAuth } from './AuthProvider';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/Card';
+import { useExperience } from '../preferences/ExperienceProvider';
 
 export function LoginForm({ onSwitchToRegister }) {
   const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ export function LoginForm({ onSwitchToRegister }) {
   const [errors, setErrors] = useState({});
   
   const { login } = useAuth();
+  const { t } = useExperience();
 
   const validateForm = () => {
     const newErrors = {};
@@ -46,9 +48,9 @@ export function LoginForm({ onSwitchToRegister }) {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle className="text-zinc-950">Welcome Back</CardTitle>
+        <CardTitle className="text-zinc-950">{t('auth.welcomeBack')}</CardTitle>
         <CardDescription>
-          Sign in to your X-Ramp account
+          {t('auth.signInDescription')}
         </CardDescription>
       </CardHeader>
       <CardContent>

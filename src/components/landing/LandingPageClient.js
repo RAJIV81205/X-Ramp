@@ -13,10 +13,12 @@ import { Footer } from './Footer';
 import { MetricsDashboard } from './MetricsDashboard';
 import { OnboardingTutorial } from '../onboarding/OnboardingTutorial';
 import { useFirstVisitTutorial } from '../onboarding/useFirstVisitTutorial';
+import { useExperience } from '../preferences/ExperienceProvider';
 
 export function LandingPageClient({ metrics }) {
   const [authMode, setAuthMode] = useState(null);
   const { showTutorial, closeTutorial, isLoading } = useFirstVisitTutorial();
+  const { t } = useExperience();
 
   if (authMode) {
     return (
@@ -25,17 +27,17 @@ export function LandingPageClient({ metrics }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="min-h-screen bg-dot-pattern flex items-center justify-center p-4 bg-gray-50"
+          className="min-h-screen bg-dot-pattern flex items-center justify-center p-4 bg-[var(--background)]"
         >
           <div className="w-full max-w-md relative">
             <motion.button
               layout
               onClick={() => setAuthMode(null)}
-              className="absolute -top-12 left-0 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors flex items-center gap-2 group"
+              className="absolute -top-12 left-0 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors flex items-center gap-2 group"
             >
-              <ArrowRight className="rotate-180 w-4 h-4 transition-transform group-hover:-translate-x-1" /> Back to home
+              <ArrowRight className="rotate-180 w-4 h-4 transition-transform group-hover:-translate-x-1" /> {t('common.backToHome')}
             </motion.button>
-            <div className="bg-white shadow-xl shadow-gray-200/50 border border-gray-200 rounded-lg overflow-hidden">
+            <div className="bg-[var(--card-background)] shadow-xl shadow-gray-200/50 border border-[var(--border-color)] rounded-lg overflow-hidden">
               {authMode === 'login' && (
                 <LoginForm onSwitchToRegister={() => setAuthMode('register')} />
               )}
@@ -50,7 +52,7 @@ export function LandingPageClient({ metrics }) {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[var(--background)]">
       {!isLoading && showTutorial && (
         <OnboardingTutorial
           onClose={closeTutorial}

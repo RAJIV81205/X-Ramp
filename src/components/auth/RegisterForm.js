@@ -5,6 +5,7 @@ import { useAuth } from './AuthProvider';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/Card';
+import { useExperience } from '../preferences/ExperienceProvider';
 
 export function RegisterForm({ onSwitchToLogin }) {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ export function RegisterForm({ onSwitchToLogin }) {
   const [errors, setErrors] = useState({});
 
   const { register } = useAuth();
+  const { t } = useExperience();
 
   const validateForm = () => {
     const newErrors = {};
@@ -53,9 +55,9 @@ export function RegisterForm({ onSwitchToLogin }) {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle className="text-zinc-950">Create Account</CardTitle>
+        <CardTitle className="text-zinc-950">{t('auth.createAccount')}</CardTitle>
         <CardDescription>
-          Join X-Ramp for keyless crypto transactions
+          {t('auth.registerDescription')}
         </CardDescription>
       </CardHeader>
       <CardContent>
