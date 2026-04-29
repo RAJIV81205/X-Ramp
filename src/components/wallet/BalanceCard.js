@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { Eye, EyeOff, RefreshCw, DollarSign, Star, Copy, Check } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { Eye, EyeOff, RefreshCw, Star, Copy, Check, QrCode } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { useWallet } from './WalletProvider';
@@ -11,8 +12,24 @@ import toast from 'react-hot-toast';
 export function BalanceCard() {
   const [showBalance, setShowBalance] = useState(true);
   const [copied, setCopied] = useState(false);
-  const { balance, stellarBalance, loading, refreshBalance } = useWallet();
+  const [exchangeRate, setExchangeRate] = useState(null);
+  const { stellarBalance, loading, refreshBalance } = useWallet();
   const { user } = useAuth();
+
+  useEffect(() => {
+    const loadRate = async () => {
+      try {
+        const response = await fetch('/api/wallet/inr-transfer');
+        if (!response.ok) return;
+        const data = await response.json();
+        setExchangeRate(data.exchangeRate);
+      } catch (error) {
+        console.error('Failed to load XLM/INR rate:', error);
+      }
+    };
+
+    loadRate();
+  }, []);
 
   const handleRefresh = async () => {
     await refreshBalance();
@@ -73,6 +90,11 @@ export function BalanceCard() {
             <span className="text-sm text-zinc-400">XLM</span>
           </div>
           <p className="text-xs text-zinc-500 mt-1">Your XLM Balance</p>
+          {exchangeRate && (
+            <p className="mt-2 text-xs text-zinc-400">
+              Reference rate: 1 XLM ~= ₹{Number(exchangeRate).toFixed(2)}
+            </p>
+          )}
         </div>
 
         {/* Balance Details */}
@@ -102,6 +124,20 @@ export function BalanceCard() {
             </div>
             <div className="bg-zinc-900 border border-zinc-800 rounded-xs p-2 font-mono text-xs text-zinc-400 break-all">
               {user.publicKey}
+            </div>
+            <div className="rounded-xs border border-zinc-800 bg-zinc-900/70 p-3">
+              <div className="mb-2 flex items-center gap-2 text-xs text-zinc-400">
+                <QrCode className="h-3.5 w-3.5" />
+                Wallet QR for quick payments
+              </div>
+              <Image
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(user.publicKey)}`}
+                alt="Wallet QR code"
+                width={160}
+                height={160}
+                unoptimized
+                className="mx-auto h-36 w-36 rounded-xs bg-white p-2"
+              />
             </div>
           </div>
         )}
