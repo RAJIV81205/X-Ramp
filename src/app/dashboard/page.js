@@ -10,6 +10,7 @@ import { WalletProvider, useWallet } from '../../components/wallet/WalletProvide
 import { BalanceCard } from '../../components/wallet/BalanceCard';
 import { TransactionHistory } from '../../components/wallet/TransactionHistory';
 import { WalletInsights } from '../../components/dashboard/WalletInsights';
+import { NotificationPreferences } from '../../components/dashboard/NotificationPreferences';
 import { DepositModal } from '../../components/wallet/DepositModal';
 import { WithdrawModal } from '../../components/wallet/WithdrawModal';
 import { TransferModal } from '../../components/wallet/TransferModal';
@@ -155,6 +156,8 @@ function DashboardContent() {
                 </div>
               </CardContent>
             </Card>
+
+            <NotificationPreferences />
           </div>
 
           {/* Right Column - Transaction History */}
