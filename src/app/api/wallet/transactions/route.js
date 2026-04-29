@@ -51,7 +51,9 @@ export async function GET(request) {
         senderEmail: tx.senderEmail,
         message: tx.message,
         createdAt: tx.createdAt,
-        stellarTransactionHash: tx.stellarTransactionHash
+        stellarTransactionHash: tx.stellarTransactionHash,
+        inrAmount: tx.inrAmount,
+        exchangeRate: tx.exchangeRate
       }))
     });
 
