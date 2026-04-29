@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint .",
+    "check": "npm run lint && npm run build",
+    "test": "npm run test:contract",
+    "test:contract": "cargo test --manifest-path contracts/xramp-vault/contracts/hello-world/Cargo.toml",
     "circuit:compile": "cd circuits && ./compile.sh",
     "circuit:setup": "cd circuits && node setup.js",
     "circuit:test": "cd circuits && node test/circuit_test.js"
