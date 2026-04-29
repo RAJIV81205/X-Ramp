@@ -60,7 +60,61 @@ X-Ramp leverages cutting-edge cryptography to solve the crypto adoption problem:
 - **⚡ Instant Settlements**: Real-time balance updates on Stellar network
 - **🌐 Cross-Platform**: Web-based interface accessible from any device
 
-### Advanced Features
+### ⚡ Black Belt Advanced Feature — Fee Sponsorship (Gasless Transactions)
+
+> **Implemented:** Fee Sponsorship via Stellar Fee Bump Transactions
+
+X-Ramp implements **gasless transactions** using Stellar's native [Fee Bump transaction](https://developers.stellar.org/docs/encyclopedia/fee-bump-transactions) mechanism (CAP-0015). This is a real Stellar protocol feature — not a simulation.
+
+#### How It Works
+
+```
+User builds inner transaction (payment)
+         │
+         ▼
+User signs inner tx with their keypair
+         │
+         ▼
+X-Ramp sponsor wraps it in a FeeBumpTransaction
+         │
+         ▼
+Sponsor signs the outer fee-bump envelope
+         │
+         ▼
+Stellar network charges fee to SPONSOR, not user
+         │
+         ▼
+User pays ZERO network fees ✨
+```
+
+#### Key Files
+| File | Purpose |
+|------|---------|
+| `src/lib/feeSponsor.js` | Core fee-bump logic — builds and submits `FeeBumpTransaction` |
+| `src/app/api/wallet/sponsored-transfer/route.js` | API endpoint for gasless transfers |
+| `src/components/wallet/SponsoredTransferModal.js` | Dashboard UI for gasless transfers |
+
+#### Configuration
+Set `SPONSOR_SECRET_KEY` in `.env` to a funded Stellar testnet keypair:
+```env
+# Generate a keypair and fund it via https://friendbot.stellar.org
+SPONSOR_SECRET_KEY=S...your-sponsor-secret...
+```
+
+When `SPONSOR_SECRET_KEY` is not set, the feature gracefully falls back to a standard payment so the app never breaks.
+
+#### API Endpoints
+- `POST /api/wallet/sponsored-transfer` — Execute a gasless XLM transfer
+- `GET /api/wallet/sponsored-transfer` — Check sponsorship status and sponsor public key
+
+#### Dashboard
+A **"Gasless Transfer ✨"** button (purple) appears in the Quick Actions panel. The modal shows:
+- Whether fee sponsorship is active
+- The sponsor's public key
+- A fee breakdown showing `0 XLM` for the user
+- Post-transfer confirmation with the fee-bump transaction hash
+
+### Platform Advanced Features
 - **📧 Email-Based Recovery**: Recover wallet access using deterministic identity commitments
 - **🔄 P2P Transfers**: Direct XLM transfers between X-Ramp users
 - **💱 INR Exchange**: Specialized Indian Rupee to XLM conversion with ZK verification

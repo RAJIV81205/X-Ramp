@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from "next/image"
-import { Plus, Minus, Send, LogOut, User, IndianRupee } from 'lucide-react';
+import { Plus, Minus, Send, LogOut, User, IndianRupee, Zap } from 'lucide-react';
 import { useAuth } from '../../components/auth/AuthProvider';
 import { WalletProvider, useWallet } from '../../components/wallet/WalletProvider';
 import { BalanceCard } from '../../components/wallet/BalanceCard';
@@ -12,6 +12,7 @@ import { DepositModal } from '../../components/wallet/DepositModal';
 import { WithdrawModal } from '../../components/wallet/WithdrawModal';
 import { TransferModal } from '../../components/wallet/TransferModal';
 import { INRTransferModal } from '../../components/wallet/INRTransferModal';
+import { SponsoredTransferModal } from '../../components/wallet/SponsoredTransferModal';
 import { Button } from '../../components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/Card';
 import { HelpButton } from '../../components/onboarding/HelpButton';
@@ -21,6 +22,7 @@ function DashboardContent() {
   const [withdrawModalOpen, setWithdrawModalOpen] = useState(false);
   const [transferModalOpen, setTransferModalOpen] = useState(false);
   const [inrTransferModalOpen, setInrTransferModalOpen] = useState(false);
+  const [sponsoredTransferModalOpen, setSponsoredTransferModalOpen] = useState(false);
   
   const { user, logout } = useAuth();
   const { stellarBalance, loadWalletData } = useWallet();
@@ -116,6 +118,15 @@ function DashboardContent() {
                   <IndianRupee className="h-4 w-4 mr-2" />
                   INR → XLM Exchange
                 </Button>
+
+                <Button
+                  variant="outline"
+                  className="w-full justify-start bg-purple-50 border-purple-200 text-purple-700 hover:bg-purple-100"
+                  onClick={() => setSponsoredTransferModalOpen(true)}
+                >
+                  <Zap className="h-4 w-4 mr-2" />
+                  Gasless Transfer ✨
+                </Button>
               </CardContent>
             </Card>
 
@@ -168,6 +179,11 @@ function DashboardContent() {
         isOpen={inrTransferModalOpen}
         onClose={() => setInrTransferModalOpen(false)}
         onTransferComplete={handleTransferComplete}
+      />
+
+      <SponsoredTransferModal
+        isOpen={sponsoredTransferModalOpen}
+        onClose={() => setSponsoredTransferModalOpen(false)}
       />
     </div>
   );

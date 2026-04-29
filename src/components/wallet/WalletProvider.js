@@ -258,6 +258,55 @@ export function WalletProvider({ children }) {
     }
   };
 
+  /**
+   * Fee-sponsored (gasless) XLM transfer.
+   * The platform pays the Stellar network fee via a Fee Bump transaction.
+   */
+  const sponsoredTransfer = async (recipientEmail, amount, message = '') => {
+    if (!user?.publicKey) {
+      throw new Error('User not authenticated');
+    }
+
+    try {
+      setLoading(true);
+
+      const token = localStorage.getItem('auth_token');
+      const response = await fetch('/api/wallet/sponsored-transfer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          recipientEmail,
+          amount: parseFloat(amount),
+          message,
+          senderAddress: user.publicKey,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Sponsored transfer failed');
+      }
+
+      if (data.feeSponsored) {
+        toast.success(`Gasless transfer complete! X-Ramp paid the network fee.`);
+      } else {
+        toast.success(data.message || 'Transfer completed successfully!');
+      }
+
+      await loadWalletData();
+      return data;
+    } catch (error) {
+      toast.error(error.message);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const refreshBalance = async () => {
     await loadWalletData();
   };
@@ -270,6 +319,7 @@ export function WalletProvider({ children }) {
     deposit,
     withdraw,
     transfer,
+    sponsoredTransfer,
     refreshBalance,
     loadTransactions,
     fundTestnetWallet
