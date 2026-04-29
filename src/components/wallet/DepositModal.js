@@ -268,7 +268,7 @@ export function DepositModal({ isOpen, onClose }) {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <h3 className="font-medium">Processing Deposit</h3>
           <p className="text-zinc-800">
-            We're processing your ${amount} deposit via {selectedMethod?.name}.
+            We&apos;re processing your ${amount} deposit via {selectedMethod?.name}.
             {useZkProof && ' Generating zero-knowledge proof...'}
           </p>
           
@@ -297,7 +297,7 @@ export function DepositModal({ isOpen, onClose }) {
             <Alert>
               <AlertDescription>
                 Your deposit is being processed securely.
-                You'll be notified once the funds are available in your wallet.
+                You&apos;ll be notified once the funds are available in your wallet.
               </AlertDescription>
             </Alert>
           )}

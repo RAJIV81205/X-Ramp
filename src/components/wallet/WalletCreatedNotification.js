@@ -33,7 +33,7 @@ export function WalletCreatedNotification({ walletAddress, onClose }) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="text-center text-sm text-zinc-800">
-            Your keyless wallet has been created. Here's your Stellar address:
+            Your keyless wallet has been created. Here&apos;s your Stellar address:
           </div>
 
           <div className="space-y-2">
@@ -65,7 +65,7 @@ export function WalletCreatedNotification({ walletAddress, onClose }) {
           <div className="bg-yellow-50 border border-yellow-200 rounded-xs p-3">
             <div className="text-sm text-yellow-800">
               <strong>Important:</strong> Your wallet needs XLM to pay for transaction fees.
-              Click "Fund Wallet" to get free testnet XLM, or send XLM from another wallet.
+              Click &quot;Fund Wallet&quot; to get free testnet XLM, or send XLM from another wallet.
             </div>
           </div>
 

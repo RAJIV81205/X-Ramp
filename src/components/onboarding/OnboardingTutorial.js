@@ -386,7 +386,7 @@ export function OnboardingTutorial({ onClose, onGetStarted }) {
                   >
                     <Lightbulb className="w-8 h-8 text-blue-600 mx-auto mb-3" />
                     <p className="text-gray-700 mb-4">
-                      You now understand how X-Ramp works. Let's create your keyless wallet and start your crypto journey.
+                      You now understand how X-Ramp works. Let&apos;s create your keyless wallet and start your crypto journey.
                     </p>
                   </motion.div>
                 )}

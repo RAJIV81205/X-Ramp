@@ -121,21 +121,25 @@ export const ComplianceVisual = () => (
     <div className="relative w-32 h-20">
       {/* Background Matrix */}
       <div className="absolute inset-0 grid grid-cols-6 grid-rows-4 gap-1">
-        {[...Array(24)].map((_, i) => (
+        {Array.from({ length: 24 }, (_, i) => ({
+          id: i,
+          isBlue: (i * 7) % 10 > 6,
+          delay: (i % 6) * 0.2
+        })).map((item) => (
           <motion.div
-            key={i}
+            key={item.id}
             className="rounded-[1px] bg-gray-200"
             variants={{
               hover: {
                 opacity: [0.3, 1, 0.3],
                 scale: [1, 0.8, 1],
-                backgroundColor: Math.random() > 0.7 ? "#93c5fd" : "#e5e7eb"
+                backgroundColor: item.isBlue ? "#93c5fd" : "#e5e7eb"
               }
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
-              delay: Math.random() * 2
+              delay: item.delay
             }}
           />
         ))}

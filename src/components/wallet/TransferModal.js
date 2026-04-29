@@ -84,7 +84,7 @@ export function TransferModal({ isOpen, onClose }) {
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <p className="text-zinc-800">
-          Send money to anyone with an email address. They'll receive instructions to claim the funds.
+          Send money to anyone with an email address. They&apos;ll receive instructions to claim the funds.
         </p>
 
         <div className="bg-zinc-50 p-4 rounded-xs border border-zinc-200">
@@ -100,7 +100,7 @@ export function TransferModal({ isOpen, onClose }) {
           value={recipientEmail}
           onChange={(e) => setRecipientEmail(e.target.value)}
           error={errors.recipientEmail}
-          placeholder="Enter recipient's email"
+          placeholder="Enter recipient&apos;s email"
           disabled={loading}
         />
 
@@ -127,7 +127,7 @@ export function TransferModal({ isOpen, onClose }) {
         <Alert>
           <AlertDescription>
             The recipient will receive an email with instructions to claim the funds.
-            If they don't have an X-Ramp account, they can create one to receive the money.
+            If they don&apos;t have an X-Ramp account, they can create one to receive the money.
           </AlertDescription>
         </Alert>
 

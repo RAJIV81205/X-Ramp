@@ -20,7 +20,7 @@ export const HeroSection = ({ onRegister }) => {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight text-zinc-950 mb-6 max-w-2xl leading-[1.1]"
           >
-            The world's best <br />
+            The world&apos;s best <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-zinc-950 via-zinc-800 to-gray-500">
               ZK Fiat Ramp
             </span>

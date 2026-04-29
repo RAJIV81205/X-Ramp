@@ -110,7 +110,7 @@ export function TransactionHistory() {
 
   useEffect(() => {
     loadTransactions();
-  }, []);
+  }, [loadTransactions]);
 
   const handleRefresh = () => {
     loadTransactions();

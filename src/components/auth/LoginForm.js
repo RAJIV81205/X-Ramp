@@ -84,7 +84,7 @@ export function LoginForm({ onSwitchToRegister }) {
         </form>
         
         <div className="mt-6 text-center text-sm">
-          <span className="text-zinc-800">Don't have an account? </span>
+          <span className="text-zinc-800">Don&apos;t have an account? </span>
           <button
             type="button"
             onClick={onSwitchToRegister}

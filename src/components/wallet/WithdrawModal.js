@@ -252,13 +252,13 @@ export function WithdrawModal({ isOpen, onClose }) {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <h3 className="font-medium">Processing Withdrawal</h3>
           <p className="text-zinc-800">
-            We're processing your {amount} XLM withdrawal to your bank account.
+            We&apos;re processing your {amount} XLM withdrawal to your bank account.
             This may take a few moments...
           </p>
           <Alert>
             <AlertDescription>
               Your withdrawal is being verified using zero-knowledge proofs.
-              You'll receive a confirmation email once the transfer is initiated.
+              You&apos;ll receive a confirmation email once the transfer is initiated.
             </AlertDescription>
           </Alert>
         </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../components/auth/AuthProvider';
 
@@ -137,8 +138,12 @@ export default function DebugPage() {
 
         {/* Navigation */}
         <div className="mt-8 text-center">
-          <a href="/" className="text-blue-600 hover:underline mr-4">← Back to Home</a>
-          <a href="/dashboard" className="text-blue-600 hover:underline">Go to Dashboard →</a>
+          <Link href="/" className="text-blue-600 hover:underline mr-4">
+            ← Back to Home
+          </Link>
+          <Link href="/dashboard" className="text-blue-600 hover:underline">
+            Go to Dashboard →
+          </Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import { XRampContract, formatBalance, getAccountBalance } from '../../lib/stellar';
 import toast from 'react-hot-toast';
@@ -16,24 +16,25 @@ export function WalletProvider({ children }) {
   
   const { user } = useAuth();
 
-  useEffect(() => {
-    if (user?.publicKey) {
-      initializeWallet();
-    }
-  }, [user]);
-
-  const initializeWallet = async () => {
+  const loadTransactions = useCallback(async () => {
     try {
-      const contractInstance = new XRampContract();
-      setContract(contractInstance);
-      await loadWalletData(contractInstance);
-    } catch (error) {
-      console.error('Failed to initialize contract:', error);
-      toast.error('Failed to initialize wallet contract');
-    }
-  };
+      const token = localStorage.getItem('auth_token');
+      const response = await fetch('/api/wallet/transactions', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
 
-  const loadWalletData = async (contractInstance = contract) => {
+      if (response.ok) {
+        const data = await response.json();
+        setTransactions(data.transactions || []);
+      }
+    } catch (error) {
+      console.error('Failed to load transactions:', error);
+    }
+  }, []);
+
+  const loadWalletData = useCallback(async (contractInstance = contract) => {
     if (!user?.publicKey) return;
     
     setLoading(true);
@@ -73,25 +74,24 @@ export function WalletProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [contract, loadTransactions, user?.publicKey]);
 
-  const loadTransactions = async () => {
+  const initializeWallet = useCallback(async () => {
     try {
-      const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/wallet/transactions', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setTransactions(data.transactions || []);
-      }
+      const contractInstance = new XRampContract();
+      setContract(contractInstance);
+      await loadWalletData(contractInstance);
     } catch (error) {
-      console.error('Failed to load transactions:', error);
+      console.error('Failed to initialize contract:', error);
+      toast.error('Failed to initialize wallet contract');
     }
-  };
+  }, [loadWalletData]);
+
+  useEffect(() => {
+    if (user?.publicKey) {
+      initializeWallet();
+    }
+  }, [user?.publicKey, initializeWallet]);
 
   const deposit = async (amount, paymentMethod = 'bank_transfer', useZkProof = false) => {
     if (!user?.publicKey) {

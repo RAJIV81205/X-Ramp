@@ -5,22 +5,17 @@ import { useEffect, useState } from 'react';
 const FIRST_VISIT_KEY = 'x-ramp-first-visit-tutorial-shown';
 
 export function useFirstVisitTutorial() {
-  const [showTutorial, setShowTutorial] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [showTutorial, setShowTutorial] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return !localStorage.getItem(FIRST_VISIT_KEY);
+  });
+  const isLoading = typeof window === 'undefined';
 
   useEffect(() => {
-    // Check if user has seen the tutorial before
-    const hasSeenTutorial = localStorage.getItem(FIRST_VISIT_KEY);
-    
-    if (!hasSeenTutorial) {
-      // Show tutorial on first visit
-      setShowTutorial(true);
-      // Mark as seen
+    if (showTutorial && typeof window !== 'undefined') {
       localStorage.setItem(FIRST_VISIT_KEY, 'true');
     }
-    
-    setIsLoading(false);
-  }, []);
+  }, [showTutorial]);
 
   const closeTutorial = () => {
     setShowTutorial(false);
