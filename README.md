@@ -9,7 +9,7 @@ X-Ramp is a Soroban-based wallet and fiat ramp that uses zero-knowledge proofs a
 - Demo video: https://drive.google.com/file/d/1ulMTN8q9r-vh1V_JvBYNuvzc0Sud81e5/view?usp=sharing
 - Feedback form: https://docs.google.com/forms/d/e/1FAIpQLScMj4XmExcsSsXmwsRXNRHcxjYX4q6KtdBjt54sYmeK4b5s0Q/viewform?usp=sharing&ouid=104632548731178991599
 - Feedback sheet: https://docs.google.com/spreadsheets/d/1S3-kM74LgE0yA43Fy7tXBUe5NU5QBP2Lh7D8qQoxh-w/edit?usp=sharing
-- GitHub repo: https://github.com/RAJIV81205/X-Ramp
+- Live link: https://x-ramp-two.vercel.app/
 - Stellar contract (Stellar Expert): https://stellar.expert/explorer/testnet/contract/CDD3IXWBEYPF4VIOTHV7STV3Q2QS3CPJELUSZXRUBZMKZIQD3QN355EU
 - Fee bump docs: https://developers.stellar.org/docs/encyclopedia/fee-bump-transactions
 - Friendbot (testnet funding): https://friendbot.stellar.org
